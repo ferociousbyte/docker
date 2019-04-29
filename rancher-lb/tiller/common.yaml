@@ -1,0 +1,16 @@
+---
+exec: ["/usr/sbin/nginx"]
+data_sources: ["file", "environment", "defaults"]
+template_sources: ["file"]
+defaults:
+  global:
+    env_lb_nodes: "node-1"
+    backends:
+      - name: "http"
+        port: 80
+      - name: "https"
+        port: 443
+environments:
+  development:
+    nginx.erb:
+      target: /etc/nginx/nginx.conf
