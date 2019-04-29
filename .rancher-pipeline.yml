@@ -3,11 +3,13 @@ stages:
   steps:
   - publishImageConfig:
       dockerfilePath: ./rancher-lb/Dockerfile
-      buildContext: .
+      buildContext: ./rancher-lb
       tag: xkodiak/rancher-lb:latest
+      registry: 127.0.0.1:34420
   - publishImageConfig:
       dockerfilePath: ./rancher-backup/Dockerfile
-      buildContext: .
+      buildContext: ./rancher-backup
       tag: xkodiak/rancher-backup:latest
+      registry: 127.0.0.1:34420
 timeout: 60
 notification: {}
