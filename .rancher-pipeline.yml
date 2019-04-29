@@ -1,0 +1,13 @@
+stages:
+- name: build
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./rancher-lb/Dockerfile
+      buildContext: .
+      tag: xkodiak/rancher-lb:latest
+  - publishImageConfig:
+      dockerfilePath: ./rancher-backup/Dockerfile
+      buildContext: .
+      tag: xkodiak/rancher-backup:latest
+timeout: 60
+notification: {}
