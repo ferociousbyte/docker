@@ -9,7 +9,8 @@ RUN a2enmod rewrite expires\
 # Environment Variables
 ENV GRAV_VERSION=1.6.8 \
     GRAV_URL=https://github.com/getgrav/grav.git \
-    GRAV_DIRECTORY=/var/www/html
+    GRAV_DIRECTORY=/var/www/html \
+    GRAV_SCRIPT=startup.sh
 
 # Workdir
 WORKDIR ${GRAV_DIRECTORY}
@@ -21,12 +22,13 @@ RUN git clone ${GRAV_URL} . \
     && bin/gpm install -y admin \
     && mv user user_default \
     && mkdir user \
-    && chown www-data:www-data -R .
+    && chown www-data:www-data -R  .
 
 # Volumes
 VOLUME [ "${GRAV_DIRECTORY}/backup", "${GRAV_DIRECTORY}/user" ]
 
 # Scriptfile
-COPY startup.sh .
-ENTRYPOINT [ "./startup.sh" ]
+COPY ${GRAV_SCRIPT} .
+RUN chmod 755 ${GRAV_SCRIPT}
+ENTRYPOINT ["./startup.sh"]
 CMD ["apache2-foreground"]
