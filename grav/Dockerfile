@@ -7,7 +7,7 @@ RUN a2enmod rewrite expires\
     && docker-php-ext-install gd zip
 
 # Environment Variables
-ENV GRAV_VERSION=1.6.8 \
+ENV GRAV_VERSION=1.6.9 \
     GRAV_URL=https://github.com/getgrav/grav.git \
     GRAV_DIRECTORY=/var/www/html
 
