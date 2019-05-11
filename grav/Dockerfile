@@ -26,8 +26,12 @@ RUN git clone ${GRAV_URL} . \
 # Volumes
 VOLUME [ "${GRAV_DIRECTORY}/backup", "${GRAV_DIRECTORY}/user" ]
 
+# PHP configuration
+RUN mv "${PHP_INI_DIR}/php.ini-production" "${PHP_INI_DIR}/php.ini"
+COPY --chown=root:staff conf/php.ini ${PHP_INI_DIR}/conf.d/custom.ini
+
 # Scriptfile
-COPY startup.sh .
-RUN chmod 755 startup.sh
-ENTRYPOINT ["./startup.sh"]
+COPY --chown=root:staff bin/startup.sh /startup.sh
+
+ENTRYPOINT ["sh", "/startup.sh"]
 CMD ["apache2-foreground"]
