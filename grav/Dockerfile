@@ -3,8 +3,13 @@ FROM php:apache
 # Requirements
 RUN a2enmod rewrite expires\
     && apt update \
-    && apt install -y git unzip libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev \
-    && docker-php-ext-install gd zip
+    && apt install -y git unzip libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev libyaml-dev \
+    && docker-php-ext-install zip exif opcache \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd \
+    && pecl install apcu \
+    && pecl install yaml \
+    && docker-php-ext-enable apcu yaml
 
 # Environment Variables
 ENV GRAV_VERSION=1.6.9 \
