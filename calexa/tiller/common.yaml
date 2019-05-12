@@ -1,0 +1,13 @@
+---
+exec: ["python", "/calexa/bin/calexa.py"]
+data_sources: ["file", "environment", "defaults"]
+template_sources: ["file"]
+defaults:
+  global:
+    env_calexa_url: "https://localhost/dav"
+    env_calexa_user: "user"
+    env_calexa_password: "password"
+environments:
+  development:
+    config.erb:
+      target: /calexa/conf/config.json

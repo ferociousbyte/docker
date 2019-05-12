@@ -38,5 +38,5 @@ COPY --chown=root:staff conf/php.ini ${PHP_INI_DIR}/conf.d/custom.ini
 # Scriptfile
 COPY --chown=root:staff bin/startup.sh /startup.sh
 
-ENTRYPOINT ["sh", "/startup.sh"]
-CMD ["apache2-foreground"]
+ENTRYPOINT [ "sh", "/startup.sh" ]
+CMD [ "apache2-foreground" ]
