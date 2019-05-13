@@ -1,8 +1,7 @@
 FROM debian:stretch-slim
 
 # Environment variables
-ENV DENO_VERSION=v0.5.0 \
-    PATH="/root/.deno/bin:${PATH}"
+ENV PATH="/root/.deno/bin:${PATH}"
 
 # Requirements and installation
 RUN apt -qq update \
