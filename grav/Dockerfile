@@ -12,9 +12,9 @@ RUN a2enmod rewrite expires\
     && docker-php-ext-enable apcu yaml
 
 # Environment Variables
-ENV GRAV_VERSION=1.6.9 \
-    GRAV_URL=https://github.com/getgrav/grav.git \
+ENV GRAV_URL=https://github.com/getgrav/grav.git \
     GRAV_DIRECTORY=/var/www/html
+ARG GRAV_VERSION
 
 # Workdir
 WORKDIR ${GRAV_DIRECTORY}

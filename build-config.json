@@ -1,0 +1,29 @@
+[
+    {
+        "name": "xkodiak/rancher-lb",
+        "folder": "rancher-lb",
+        "args": {},
+        "tags": [
+            "latest"
+        ]
+    },
+    {
+        "name": "xkodiak/rancher-backup",
+        "folder": "rancher-backup",
+        "args": {},
+        "tags": [
+            "latest"
+        ]
+    },
+    {
+        "name": "xkodiak/deno",
+        "folder": "deno",
+        "args": {
+            "DENO_VERSION": "v0.5.0"
+        },
+        "tags": [
+            "latest",
+            "${DENO_VERSION}"
+        ]
+    }
+]
