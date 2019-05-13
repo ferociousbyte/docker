@@ -1,12 +1,10 @@
 FROM nginx:stable
-LABEL Author="xkodiak"
 
-RUN apt update
-RUN apt install -y ruby
-RUN gem install tiller
+EXPOSE 80 443
 
-EXPOSE 80
-EXPOSE 443
+RUN apt update \
+    && apt install -y ruby \
+    && gem install tiller
 
 ADD tiller/ /etc/tiller
 

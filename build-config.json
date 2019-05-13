@@ -25,5 +25,16 @@
             "latest",
             "${DENO_VERSION}"
         ]
+    },
+    {
+        "name": "xkodiak/grav",
+        "folder": "grav",
+        "args": {
+            "GRAV_VERSION": "1.6.9"
+        },
+        "tags": [
+            "latest",
+            "${GRAV_VERSION}"
+        ]
     }
 ]

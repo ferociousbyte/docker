@@ -47,11 +47,11 @@ function createBuildCommand(buildInformation: BuildInformation): string[] {
 }
 
 (async () => {
-    const config = await loadConfig("build.json");
+    const config = await loadConfig("build-config.json");
 
-    config.forEach(async v => {
-        const build = createBuildCommand(v);
-        const push = createPushCommand(v.name);
+    for (let i = 0; i < config.length; i++) {
+        const build = createBuildCommand(config[i]);
+        const push = createPushCommand(config[i].name);
 
         console.log(build);
         console.log(push);
@@ -62,5 +62,5 @@ function createBuildCommand(buildInformation: BuildInformation): string[] {
         await Deno.run({
             args: push
         }).status();
-    });
+    }
 })();

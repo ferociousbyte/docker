@@ -1,14 +1,8 @@
 FROM alpine:latest
 
-RUN apk update
-RUN apk add bash rsync
+RUN apk update \
+    && apk add rsync
 
-COPY scripts/* /scripts/
-COPY config/* /config/
+COPY conf/ /conf
 
-RUN chmod -R 755 scripts/*
-RUN chmod -R 644 config/*
-
-WORKDIR /scripts
-
-ENTRYPOINT [ "bash", "rsync_daemon.sh" ]
+CMD [ "rsync", "--daemon", "--no-detach", "--config", "/conf/rsyncd.conf" ]
