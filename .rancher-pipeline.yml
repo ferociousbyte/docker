@@ -3,6 +3,6 @@ stages:
   steps:
   - runScriptConfig:
       image: xkodiak/deno
-      shellScript: deno --help
+      shellScript: docker --help
 timeout: 60
 notification: {}
